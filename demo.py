@@ -57,6 +57,39 @@ def brokerage():
     return json.dumps(response)
 
 
+def triAngelData1():
+    data = pd.read_csv('triAngelData1.csv')
+    response = []
+    for index, row in data.iterrows():
+        response.append({'x': int(row['x']), 'y': int(row['y']), 'z': int(row['z']), 'presult': row['presult']})
+    return json.dumps(response)
+
+
+def triAngelData2():
+    data = pd.read_csv('triAngelData2.csv')
+    response = []
+    for index, row in data.iterrows():
+        response.append({'x': int(row['x']), 'y': int(row['y']), 'z': int(row['z']), 'presult': row['presult']})
+    return json.dumps(response)
+
+
+def calendarData1():
+    data = pd.read_csv('calendarData1.csv')
+    response = []
+    for index, row in data.iterrows():
+        print(row)
+        response.append({'year': float(row['year']), 'month': float(row['month']), 'date': float(row['date']), 'presult': float(row['presult'])})
+    return json.dumps(response)
+
+
+def calendarData2():
+    data = pd.read_csv('calendarData2.csv')
+    response = []
+    for index, row in data.iterrows():
+        response.append({'year': row['year'], 'month': row['month'], 'date': row['date'], 'presult': row['presult']})
+    return json.dumps(response)
+
+
 def is_triangle():
     data = request.get_data()
     dicts = json.loads(data)
@@ -215,6 +248,26 @@ def getCommission_Test1():
 @app.route('/getCommissionTest2', methods=["GET"])
 def getCommission_Test2():
     return getCommissionTest2()
+
+
+@app.route('/getTriAngelData1', methods=["GET"])
+def getTriAngelData1():
+    return triAngelData1()
+
+
+@app.route('/getTriAngelData2', methods=["GET"])
+def getTriAngelData2():
+    return triAngelData2()
+
+
+@app.route('/getCalendarData1', methods=["GET"])
+def getCalendarData1():
+    return calendarData1()
+
+
+@app.route('/getCalendarData2', methods=["GET"])
+def getCalendarData2():
+    return calendarData2()
 
 
 if __name__ == '__main__':

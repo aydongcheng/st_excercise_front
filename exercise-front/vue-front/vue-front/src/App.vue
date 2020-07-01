@@ -182,34 +182,51 @@ export default {
             {name:"测试结果", value:"rresult"},
             {name:"正误", value:"tf"},
           ];
-          this.tableData=[
-            {x:100,y:100,z:1,presult:"等腰三角形"},
-            {x:100,y:100,z:2,presult:"等腰三角形"},
-            {x:100,y:100,z:100,presult:"等边三角形"},
-            {x:100,y:100,z:199,presult:"等腰三角形"},
-            {x:100,y:100,z:200,presult:"非三角形"},
-            {x:100,y:1,z:100,presult:"等腰三角形"},
-            {x:100,y:2,z:100,presult:"等腰三角形"},
-            {x:100,y:199,z:100,presult:"等腰三角形"},
-            {x:100,y:200,z:100,presult:"非三角形"},
-            {x:1,y:100,z:100,presult:"等腰三角形"},
-            {x:2,y:100,z:100,presult:"等腰三角形"},
-            {x:199,y:100,z:100,presult:"等腰三角形"},
-            {x:200,y:100,z:100,presult:"非三角形"}
-          ];
-          for(let i=0;i<this.tableData.length;i++){
-            this.$axios.post('/triAngelTest',
-              {
-                'x':this.tableData[i].x,
-                'y':this.tableData[i].y,
-                'z':this.tableData[i].z,
-                'index':i
-              })
-              .then((response) => {
-                let result=response.data;
-                this.changeData(result)
-              })
-          }
+          // this.tableData=[
+          //   {x:100,y:100,z:1,presult:"等腰三角形"},
+          //   {x:100,y:100,z:2,presult:"等腰三角形"},
+          //   {x:100,y:100,z:100,presult:"等边三角形"},
+          //   {x:100,y:100,z:199,presult:"等腰三角形"},
+          //   {x:100,y:100,z:200,presult:"非三角形"},
+          //   {x:100,y:1,z:100,presult:"等腰三角形"},
+          //   {x:100,y:2,z:100,presult:"等腰三角形"},
+          //   {x:100,y:199,z:100,presult:"等腰三角形"},
+          //   {x:100,y:200,z:100,presult:"非三角形"},
+          //   {x:1,y:100,z:100,presult:"等腰三角形"},
+          //   {x:2,y:100,z:100,presult:"等腰三角形"},
+          //   {x:199,y:100,z:100,presult:"等腰三角形"},
+          //   {x:200,y:100,z:100,presult:"非三角形"}
+          // ];
+          this.$axios.get('/getTriAngelData1')
+            .then((response) => {
+              this.tableData=response.data;
+              for(let i=0;i<this.tableData.length;i++){
+                this.$axios.post('/triAngelTest',
+                  {
+                    'x':this.tableData[i].x,
+                    'y':this.tableData[i].y,
+                    'z':this.tableData[i].z,
+                    'index':i
+                  })
+                  .then((response) => {
+                    let result=response.data;
+                    this.changeData(result)
+                  })
+              }
+            });
+        //   for(let i=0;i<this.tableData.length;i++){
+        //     this.$axios.post('/triAngelTest',
+        //       {
+        //         'x':this.tableData[i].x,
+        //         'y':this.tableData[i].y,
+        //         'z':this.tableData[i].z,
+        //         'index':i
+        //       })
+        //       .then((response) => {
+        //         let result=response.data;
+        //         this.changeData(result)
+        //       })
+        //   }
         },
         triAngelTest2(){
           this.tableCol=[
@@ -220,32 +237,49 @@ export default {
             {name:"测试结果", value:"rresult"},
             {name:"正误", value:"tf"},
           ];
-          this.tableData=[
-            {x:3,y:4,z:5,presult:"一般三角形"},
-            {x:3,y:3,z:4,presult:"等腰三角形"},
-            {x:3,y:4,z:4,presult:"等腰三角形"},
-            {x:3,y:4,z:3,presult:"等腰三角形"},
-            {x:3,y:3,z:3,presult:"等边三角形"},
-            {x:0,y:1,z:2,presult:"非三角形"},
-            {x:1,y:0,z:2,presult:"非三角形"},
-            {x:1,y:2,z:0,presult:"非三角形"},
-            {x:1,y:2,z:3,presult:"非三角形"},
-            {x:2,y:3,z:1,presult:"非三角形"},
-            {x:3,y:2,z:1,presult:"非三角形"}
-          ];
-          for(let i=0;i<this.tableData.length;i++){
-            this.$axios.post('/triAngelTest',
-              {
-                'x':this.tableData[i].x,
-                'y':this.tableData[i].y,
-                'z':this.tableData[i].z,
-                'index':i
-              })
-              .then((response) => {
-                let result=response.data;
-                this.changeData(result)
-              })
-          }
+          // this.tableData=[
+          //   {x:3,y:4,z:5,presult:"一般三角形"},
+          //   {x:3,y:3,z:4,presult:"等腰三角形"},
+          //   {x:3,y:4,z:4,presult:"等腰三角形"},
+          //   {x:3,y:4,z:3,presult:"等腰三角形"},
+          //   {x:3,y:3,z:3,presult:"等边三角形"},
+          //   {x:0,y:1,z:2,presult:"非三角形"},
+          //   {x:1,y:0,z:2,presult:"非三角形"},
+          //   {x:1,y:2,z:0,presult:"非三角形"},
+          //   {x:1,y:2,z:3,presult:"非三角形"},
+          //   {x:2,y:3,z:1,presult:"非三角形"},
+          //   {x:3,y:2,z:1,presult:"非三角形"}
+          // ];
+          this.$axios.get('/getTriAngelData2')
+            .then((response) => {
+              this.tableData=response.data;
+              for(let i=0;i<this.tableData.length;i++){
+                this.$axios.post('/triAngelTest',
+                  {
+                    'x':this.tableData[i].x,
+                    'y':this.tableData[i].y,
+                    'z':this.tableData[i].z,
+                    'index':i
+                  })
+                  .then((response) => {
+                    let result=response.data;
+                    this.changeData(result)
+                  })
+              }
+            });
+          // for(let i=0;i<this.tableData.length;i++){
+          //   this.$axios.post('/triAngelTest',
+          //     {
+          //       'x':this.tableData[i].x,
+          //       'y':this.tableData[i].y,
+          //       'z':this.tableData[i].z,
+          //       'index':i
+          //     })
+          //     .then((response) => {
+          //       let result=response.data;
+          //       this.changeData(result)
+          //     })
+          // }
         },
         calendarTest1(){
           this.tableCol=[
@@ -256,34 +290,38 @@ export default {
             {name:"测试结果", value:"rresult"},
             {name:"正误", value:"tf"},
           ];
-          this.tableData=[
-            {year:2000,month:7,date:1,presult:6},
-            {year:2000,month:7,date:2,presult:7},
-            {year:2000,month:7,date:15,presult:6},
-            {year:2000,month:7,date:30,presult:7},
-            {year:2000,month:7,date:31,presult:1},
-            {year:2000,month:1,date:15,presult:6},
-            {year:2000,month:2,date:15,presult:2},
-            {year:2000,month:11,date:15,presult:3},
-            {year:2000,month:12,date:15,presult:5},
-            {year:1920,month:7,date:15,presult:4},
-            {year:1921,month:7,date:15,presult:5},
-            {year:2048,month:7,date:15,presult:3},
-            {year:2049,month:7,date:15,presult:4}
-          ];
-          for(let i=0;i<this.tableData.length;i++){
-            this.$axios.post('/calendarTest',
-              {
-                'year':this.tableData[i].year,
-                'month':this.tableData[i].month,
-                'date':this.tableData[i].date,
-                'index':i
-              })
-              .then((response) => {
-                let result=response.data;
-                this.changeData(result)
-              })
-          }
+          // this.tableData=[
+          //   {year:2000,month:7,date:1,presult:6},
+          //   {year:2000,month:7,date:2,presult:7},
+          //   {year:2000,month:7,date:15,presult:6},
+          //   {year:2000,month:7,date:30,presult:7},
+          //   {year:2000,month:7,date:31,presult:1},
+          //   {year:2000,month:1,date:15,presult:6},
+          //   {year:2000,month:2,date:15,presult:2},
+          //   {year:2000,month:11,date:15,presult:3},
+          //   {year:2000,month:12,date:15,presult:5},
+          //   {year:1920,month:7,date:15,presult:4},
+          //   {year:1921,month:7,date:15,presult:5},
+          //   {year:2048,month:7,date:15,presult:3},
+          //   {year:2049,month:7,date:15,presult:4}
+          // ];
+          this.$axios.get('/getCalendarData1')
+            .then((response) => {
+              this.tableData=response.data;
+              for(let i=0;i<this.tableData.length;i++){
+                this.$axios.post('/calendarTest',
+                  {
+                    'year':this.tableData[i].year,
+                    'month':this.tableData[i].month,
+                    'date':this.tableData[i].date,
+                    'index':i
+                  })
+                  .then((response) => {
+                    let result=response.data;
+                    this.changeData(result)
+                  })
+              }
+            });
         },
         calendarTest2(){
           this.tableCol=[
@@ -294,37 +332,54 @@ export default {
             {name:"测试结果", value:"rresult"},
             {name:"正误", value:"tf"},
           ];
-          this.tableData=[
-            {year:2007,month:2,date:25,presult:7},
-            {year:2008,month:2,date:28,presult:4},
-            {year:2005,month:5,date:30,presult:1},
-            {year:1990,month:4,date:18,presult:3},
-            {year:"year",month:96,date:31,presult:"error"},
-            {year:1935,month:3,date:201,presult:"error"},
-            {year:1895,month:10,date:31,presult:"error"},
-            {year:2051,month:2,date:1,presult:"error"},
-            {year:2005,month:0,date:1,presult:"error"},
-            {year:2008,month:0,date:1,presult:"error"},
-            {year:2005,month:13,date:1,presult:"error"},
-            {year:1999,month:1,date:0,presult:"error"},
-            {year:2007,month:2,date:30,presult:"error"},
-            {year:2008,month:2,date:31,presult:"error"},
-            {year:1998,month:1,date:32,presult:"error"},
-            {year:1990,month:4,date:33,presult:"error"}
-          ];
-          for(let i=0;i<this.tableData.length;i++){
-            this.$axios.post('/calendarTest',
-              {
-                'year':this.tableData[i].year,
-                'month':this.tableData[i].month,
-                'date':this.tableData[i].date,
-                'index':i
-              })
-              .then((response) => {
-                let result=response.data;
-                this.changeData(result)
-              })
-          }
+          // this.tableData=[
+          //   {year:2007,month:2,date:25,presult:7},
+          //   {year:2008,month:2,date:28,presult:4},
+          //   {year:2005,month:5,date:30,presult:1},
+          //   {year:1990,month:4,date:18,presult:3},
+          //   {year:"year",month:96,date:31,presult:"error"},
+          //   {year:1935,month:3,date:201,presult:"error"},
+          //   {year:1895,month:10,date:31,presult:"error"},
+          //   {year:2051,month:2,date:1,presult:"error"},
+          //   {year:2005,month:0,date:1,presult:"error"},
+          //   {year:2008,month:0,date:1,presult:"error"},
+          //   {year:2005,month:13,date:1,presult:"error"},
+          //   {year:1999,month:1,date:0,presult:"error"},
+          //   {year:2007,month:2,date:30,presult:"error"},
+          //   {year:2008,month:2,date:31,presult:"error"},
+          //   {year:1998,month:1,date:32,presult:"error"},
+          //   {year:1990,month:4,date:33,presult:"error"}
+          // ];
+          // for(let i=0;i<this.tableData.length;i++){
+          //   this.$axios.post('/calendarTest',
+          //     {
+          //       'year':this.tableData[i].year,
+          //       'month':this.tableData[i].month,
+          //       'date':this.tableData[i].date,
+          //       'index':i
+          //     })
+          //     .then((response) => {
+          //       let result=response.data;
+          //       this.changeData(result)
+          //     })
+          // }
+          this.$axios.get('/getCalendarData2')
+            .then((response) => {
+              this.tableData=response.data;
+              for(let i=0;i<this.tableData.length;i++){
+                this.$axios.post('/calendarTest',
+                  {
+                    'year':this.tableData[i].year,
+                    'month':this.tableData[i].month,
+                    'date':this.tableData[i].date,
+                    'index':i
+                  })
+                  .then((response) => {
+                    let result=response.data;
+                    this.changeData(result)
+                  })
+              }
+            });
         },
       phoneTest1(){
         this.tableCol=[
@@ -462,7 +517,7 @@ export default {
       },
         changeData(result){
             this.$set(this.tableData[result['index']],'rresult',result['result']);
-            if(result['result']===this.tableData[result['index']]['presult']){
+            if(result['result'] == this.tableData[result['index']]['presult']){
                 this.tableData[result['index']]['tf']="正确"
             }
             else{
