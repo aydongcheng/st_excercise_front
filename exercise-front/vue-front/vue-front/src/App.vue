@@ -389,33 +389,38 @@ export default {
           {name:"测试结果", value:"rresult"},
           {name:"正误", value:"tf"},
         ];
-        this.tableData=[
-          {n:150,m:-1,presult:"error"},
-          {n:150,m:0,presult:47.05},
-          {n:150,m:1,presult:47.05},
-          {n:150,m:6,presult:47.50},
-          {n:150,m:10,presult:47.50},
-          {n:150,m:11,presult:47.50},
-          {n:150,m:12,presult:"error"},
-          {n:-1,m:6,presult:"error"},
-          {n:0,m:6,presult:25.00},
-          {n:60,m:6,presult:34.00},
-          {n:40000,m:6,presult:5845.00},
-          {n:44640,m:6,presult:6520.12},
-          {n:45000,m:6,presult:"error"},
-        ];
-        for(let i=0;i<this.tableData.length;i++){
-          this.$axios.post('/phoneBillTest',
-            {
-              'n':this.tableData[i].n,
-              'm':this.tableData[i].m,
-              'index':i
-            })
-            .then((response) => {
-              let result=response.data;
-              this.changeData(result)
-            })
-        }
+        // this.tableData=[
+        //   {n:150,m:-1,presult:"error"},
+        //   {n:150,m:0,presult:47.05},
+        //   {n:150,m:1,presult:47.05},
+        //   {n:150,m:6,presult:47.50},
+        //   {n:150,m:10,presult:47.50},
+        //   {n:150,m:11,presult:47.50},
+        //   {n:150,m:12,presult:"error"},
+        //   {n:-1,m:6,presult:"error"},
+        //   {n:0,m:6,presult:25.00},
+        //   {n:60,m:6,presult:34.00},
+        //   {n:40000,m:6,presult:5845.00},
+        //   {n:44640,m:6,presult:6520.12},
+        //   {n:45000,m:6,presult:"error"},
+        // ];
+        this.$axios.get('/phoneBillTest1')
+          .then((response) => {
+            this.tableData=response.data;
+            for(let i=0;i<this.tableData.length;i++){
+              this.$axios.post('/phoneBillTest',
+                {
+                  'n':this.tableData[i].n,
+                  'm':this.tableData[i].m,
+                  'index':i
+                })
+                .then((response) => {
+                  let result=response.data;
+                  this.changeData(result)
+                })
+            }
+          });
+
       },
       phoneTest2(){
         this.tableCol=[
@@ -425,25 +430,29 @@ export default {
           {name:"测试结果", value:"rresult"},
           {name:"正误", value:"tf"},
         ];
-        this.tableData=[
-          {n:30,m:1,presult:29.455},
-          {n:90,m:2,presult:38.2975},
-          {n:150,m:3,presult:47.05},
-          {n:240,m:5,presult:61.00},
-          {n:360,m:9,presult:79.00},
-        ];
-        for(let i=0;i<this.tableData.length;i++){
-          this.$axios.post('/phoneBillTest',
-            {
-              'n':this.tableData[i].n,
-              'm':this.tableData[i].m,
-              'index':i
-            })
-            .then((response) => {
-              let result=response.data;
-              this.changeData(result)
-            })
-        }
+        // this.tableData=[
+        //   {n:30,m:1,presult:29.455},
+        //   {n:90,m:2,presult:38.2975},
+        //   {n:150,m:3,presult:47.05},
+        //   {n:240,m:5,presult:61.00},
+        //   {n:360,m:9,presult:79.00},
+        // ];
+        this.$axios.get('/phoneBillTest2')
+          .then((response) => {
+            this.tableData=response.data;
+            for(let i=0;i<this.tableData.length;i++){
+              this.$axios.post('/phoneBillTest',
+                {
+                  'n':this.tableData[i].n,
+                  'm':this.tableData[i].m,
+                  'index':i
+                })
+                .then((response) => {
+                  let result=response.data;
+                  this.changeData(result)
+                })
+            }
+          });
       },
       phoneTest3(){
         this.tableCol=[
@@ -453,30 +462,34 @@ export default {
           {name:"测试结果", value:"rresult"},
           {name:"正误", value:"tf"},
         ];
-        this.tableData=[
-          {n:30,m:0,presult:29.455},
-          {n:30,m:6,presult:29.50},
-          {n:90,m:0,presult:38.2975},
-          {n:90,m:6,presult:38.50},
-          {n:150,m:0,presult:47.05},
-          {n:150,m:6,presult:47.50},
-          {n:240,m:0,presult:60.10},
-          {n:240,m:6,presult:61.00},
-          {n:360,m:0,presult:77.38},
-          {n:360,m:9,presult:79.00},
-        ];
-        for(let i=0;i<this.tableData.length;i++){
-          this.$axios.post('/phoneBillTest',
-            {
-              'n':this.tableData[i].n,
-              'm':this.tableData[i].m,
-              'index':i
-            })
-            .then((response) => {
-              let result=response.data;
-              this.changeData(result)
-            })
-        }
+        // this.tableData=[
+        //   {n:30,m:0,presult:29.455},
+        //   {n:30,m:6,presult:29.50},
+        //   {n:90,m:0,presult:38.2975},
+        //   {n:90,m:6,presult:38.50},
+        //   {n:150,m:0,presult:47.05},
+        //   {n:150,m:6,presult:47.50},
+        //   {n:240,m:0,presult:60.10},
+        //   {n:240,m:6,presult:61.00},
+        //   {n:360,m:0,presult:77.38},
+        //   {n:360,m:9,presult:79.00},
+        // ];
+        this.$axios.get('/phoneBillTest3')
+          .then((response) => {
+            this.tableData=response.data;
+            for(let i=0;i<this.tableData.length;i++){
+              this.$axios.post('/phoneBillTest',
+                {
+                  'n':this.tableData[i].n,
+                  'm':this.tableData[i].m,
+                  'index':i
+                })
+                .then((response) => {
+                  let result=response.data;
+                  this.changeData(result)
+                })
+            }
+          });
       },
       phoneTest4(){
         this.tableCol=[
@@ -486,34 +499,38 @@ export default {
           {name:"测试结果", value:"rresult"},
           {name:"正误", value:"tf"},
         ];
-        this.tableData=[
-          {n:150,m:-1,presult:"error"},
-          {n:-1,m:6,presult:"error"},
-          {n:30,m:0,presult:29.455},
-          {n:30,m:6,presult:29.50},
-          {n:90,m:0,presult:38.2975},
-          {n:90,m:6,presult:38.50},
-          {n:150,m:0,presult:47.05},
-          {n:150,m:6,presult:47.50},
-          {n:240,m:0,presult:60.10},
-          {n:240,m:6,presult:61.00},
-          {n:360,m:0,presult:77.38},
-          {n:360,m:9,presult:79.00},
-          {n:45000,m:6,presult:"error"},
-          {n:150,m:12,presult:"error"},
-        ];
-        for(let i=0;i<this.tableData.length;i++){
-          this.$axios.post('/phoneBillTest',
-            {
-              'n':this.tableData[i].n,
-              'm':this.tableData[i].m,
-              'index':i
-            })
-            .then((response) => {
-              let result=response.data;
-              this.changeData(result)
-            })
-        }
+        // this.tableData=[
+        //   {n:150,m:-1,presult:"error"},
+        //   {n:-1,m:6,presult:"error"},
+        //   {n:30,m:0,presult:29.455},
+        //   {n:30,m:6,presult:29.50},
+        //   {n:90,m:0,presult:38.2975},
+        //   {n:90,m:6,presult:38.50},
+        //   {n:150,m:0,presult:47.05},
+        //   {n:150,m:6,presult:47.50},
+        //   {n:240,m:0,presult:60.10},
+        //   {n:240,m:6,presult:61.00},
+        //   {n:360,m:0,presult:77.38},
+        //   {n:360,m:9,presult:79.00},
+        //   {n:45000,m:6,presult:"error"},
+        //   {n:150,m:12,presult:"error"},
+        // ];
+        this.$axios.get('/phoneBillTest4')
+          .then((response) => {
+            this.tableData=response.data;
+            for(let i=0;i<this.tableData.length;i++){
+              this.$axios.post('/phoneBillTest',
+                {
+                  'n':this.tableData[i].n,
+                  'm':this.tableData[i].m,
+                  'index':i
+                })
+                .then((response) => {
+                  let result=response.data;
+                  this.changeData(result)
+                })
+            }
+          });
       },
         changeData(result){
             this.$set(this.tableData[result['index']],'rresult',result['result']);
