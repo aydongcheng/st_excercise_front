@@ -263,36 +263,33 @@ def commissionTest():
 def triAngelTest():
     return is_triangle()
 
-
 @app.route('/calendarTest', methods=["POST"])
 def calendarTest():
     return getDate()
-
-
-@app.route('/phoneBillTest1', methods=["POST"])
-def phoneBillTest1():
-    return phone_bills1()
-
-
-@app.route('/phoneBillTest2', methods=["POST"])
-def phoneBillTest2():
-    return phone_bills2()
-
-
-@app.route('/phoneBillTest3', methods=["POST"])
-def phoneBillTest3():
-    return phone_bills3()
-
-
-@app.route('/phoneBillTest4', methods=["POST"])
-def phoneBillTest4():
-    return phone_bills4()
-
 
 @app.route('/phoneBillTest', methods=["POST"])
 def phoneBillTest():
     return phone_bills()
 
+
+@app.route('/phoneBillTest1', methods=["GET"])
+def phoneBillTest1():
+    return phone_bills1()
+
+
+@app.route('/phoneBillTest2', methods=["GET"])
+def phoneBillTest2():
+    return phone_bills2()
+
+
+@app.route('/phoneBillTest3', methods=["GET"])
+def phoneBillTest3():
+    return phone_bills3()
+
+
+@app.route('/phoneBillTest4', methods=["GET"])
+def phoneBillTest4():
+    return phone_bills4()
 
 @app.route('/getCommissionTest1', methods=["GET"])
 def getCommission_Test1():
