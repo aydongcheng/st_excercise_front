@@ -226,7 +226,7 @@ def phone_bills1():
     data = pd.read_csv('phoneBillTest1.csv')
     response = []
     for index, row in data.iterrows():
-        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
+        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': row['presult']})
     return json.dumps(response)
 
 
@@ -234,7 +234,7 @@ def phone_bills2():
     data = pd.read_csv('phoneBillTest2.csv')
     response = []
     for index, row in data.iterrows():
-        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
+        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': row['presult']})
     return json.dumps(response)
 
 
@@ -242,7 +242,7 @@ def phone_bills3():
     data = pd.read_csv('phoneBillTest3.csv')
     response = []
     for index, row in data.iterrows():
-        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
+        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': row['presult']})
     return json.dumps(response)
 
 
@@ -250,7 +250,7 @@ def phone_bills4():
     data = pd.read_csv('phoneBillTest4.csv')
     response = []
     for index, row in data.iterrows():
-        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
+        response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': row['presult']})
     return json.dumps(response)
 
 
@@ -263,9 +263,11 @@ def commissionTest():
 def triAngelTest():
     return is_triangle()
 
+
 @app.route('/calendarTest', methods=["POST"])
 def calendarTest():
     return getDate()
+
 
 @app.route('/phoneBillTest', methods=["POST"])
 def phoneBillTest():
@@ -290,6 +292,7 @@ def phoneBillTest3():
 @app.route('/phoneBillTest4', methods=["GET"])
 def phoneBillTest4():
     return phone_bills4()
+
 
 @app.route('/getCommissionTest1', methods=["GET"])
 def getCommission_Test1():
