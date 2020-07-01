@@ -14,7 +14,8 @@ def getCommissionTest1():
     data = pd.read_csv('commissionTest1.csv')
     response = []
     for index, row in data.iterrows():
-        response.append({'mainframe': int(row['mainframe']), 'displayer': int(row['displayer']), 'peripheral': int(row['peripheral']),
+        response.append({'mainframe': int(row['mainframe']), 'displayer': int(row['displayer']),
+                         'peripheral': int(row['peripheral']),
                          'presult': int(row['presult'])})
     return json.dumps(response)
 
@@ -78,7 +79,8 @@ def calendarData1():
     response = []
     for index, row in data.iterrows():
         print(row)
-        response.append({'year': float(row['year']), 'month': float(row['month']), 'date': float(row['date']), 'presult': float(row['presult'])})
+        response.append({'year': float(row['year']), 'month': float(row['month']), 'date': float(row['date']),
+                         'presult': float(row['presult'])})
     return json.dumps(response)
 
 
@@ -219,12 +221,14 @@ def phone_bills():
     response['index'] = index
     return json.dumps(response)
 
+
 def phone_bills1():
     data = pd.read_csv('phoneBillTest1.csv')
     response = []
     for index, row in data.iterrows():
         response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
     return json.dumps(response)
+
 
 def phone_bills2():
     data = pd.read_csv('phoneBillTest2.csv')
@@ -233,6 +237,7 @@ def phone_bills2():
         response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
     return json.dumps(response)
 
+
 def phone_bills3():
     data = pd.read_csv('phoneBillTest3.csv')
     response = []
@@ -240,12 +245,14 @@ def phone_bills3():
         response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
     return json.dumps(response)
 
+
 def phone_bills4():
     data = pd.read_csv('phoneBillTest4.csv')
     response = []
     for index, row in data.iterrows():
         response.append({'n': int(row['n']), 'm': int(row['m']), 'presult': int(row['presult'])})
     return json.dumps(response)
+
 
 @app.route('/commissionTest', methods=["POST"])
 def commissionTest():
@@ -266,17 +273,21 @@ def calendarTest():
 def phoneBillTest1():
     return phone_bills1()
 
+
 @app.route('/phoneBillTest2', methods=["POST"])
 def phoneBillTest2():
     return phone_bills2()
+
 
 @app.route('/phoneBillTest3', methods=["POST"])
 def phoneBillTest3():
     return phone_bills3()
 
+
 @app.route('/phoneBillTest4', methods=["POST"])
 def phoneBillTest4():
     return phone_bills4()
+
 
 @app.route('/phoneBillTest', methods=["POST"])
 def phoneBillTest():
