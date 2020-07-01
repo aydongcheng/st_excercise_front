@@ -10,6 +10,25 @@ app = Flask(__name__)
 CORS(app, resources=r'/*')
 
 
+def getCommissionTest1():
+    data = pd.read_csv('commissionTest1.csv')
+    response = []
+    for index, row in data.iterrows():
+        response.append({'mainframe': int(row['mainframe']), 'displayer': int(row['displayer']), 'peripheral': int(row['peripheral']),
+                         'presult': int(row['presult'])})
+    return json.dumps(response)
+
+
+def getCommissionTest2():
+    data = pd.read_csv('commissionTest2.csv')
+    response = []
+    for index, row in data.iterrows():
+        response.append({'mainframe': int(row['mainframe']), 'displayer': int(row['displayer']),
+                         'peripheral': int(row['peripheral']),
+                         'presult': int(row['presult'])})
+    return json.dumps(response)
+
+
 def brokerage():
     mainframe = {'price': 25, 'maxNum': 70}
     displayer = {'price': 30, 'maxNum': 80}
@@ -186,6 +205,16 @@ def calendarTest():
 @app.route('/phoneBillTest', methods=["POST"])
 def phoneBillTest():
     return phone_bills()
+
+
+@app.route('/getCommissionTest1', methods=["GET"])
+def getCommission_Test1():
+    return getCommissionTest1()
+
+
+@app.route('/getCommissionTest2', methods=["GET"])
+def getCommission_Test2():
+    return getCommissionTest2()
 
 
 if __name__ == '__main__':

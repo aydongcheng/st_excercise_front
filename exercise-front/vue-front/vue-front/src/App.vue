@@ -92,34 +92,38 @@ export default {
                 {name:"测试结果", value:"rresult"},
                 {name:"正误", value:"tf"},
             ];
-            this.tableData=[
-                {mainframe:0,displayer:40,peripheral:45,presult:0},
-                {mainframe:1,displayer:40,peripheral:45,presult:650},
-                {mainframe:35,displayer:40,peripheral:45,presult:820},
-                {mainframe:69,displayer:40,peripheral:45,presult:990},
-                {mainframe:70,displayer:40,peripheral:45,presult:995},
-                {mainframe:35,displayer:0,peripheral:45,presult:0},
-                {mainframe:35,displayer:1,peripheral:45,presult:586},
-                {mainframe:35,displayer:79,peripheral:45,presult:1054},
-                {mainframe:35,displayer:80,peripheral:45,presult:1060},
-                {mainframe:35,displayer:40,peripheral:0,presult:0},
-                {mainframe:35,displayer:40,peripheral:1,presult:424},
-                {mainframe:35,displayer:40,peripheral:89,presult:1216},
-                {mainframe:35,displayer:40,peripheral:90,presult:1225}
-            ];
-            for(let i=0;i<this.tableData.length;i++){
-                this.$axios.post('/commissionTest',
-                    {
-                        'mainframe':this.tableData[i].mainframe,
-                        'displayer':this.tableData[i].displayer,
-                        'peripheral':this.tableData[i].peripheral,
-                        'index':i
-                    })
-                    .then((response) => {
-                        let result=response.data;
-                        this.changeData(result)
-                    })
-            }
+            this.$axios.get('/getCommissionTest1')
+                .then((response) => {
+                    this.tableData=response.data;
+                    for(let i=0;i<this.tableData.length;i++){
+                        this.$axios.post('/commissionTest',
+                            {
+                                'mainframe':this.tableData[i].mainframe,
+                                'displayer':this.tableData[i].displayer,
+                                'peripheral':this.tableData[i].peripheral,
+                                'index':i
+                            })
+                            .then((response) => {
+                                let result=response.data;
+                                this.changeData(result)
+                            })
+                    }
+                });
+            // this.tableData=[
+            //     {mainframe:0,displayer:40,peripheral:45,presult:0},
+            //     {mainframe:1,displayer:40,peripheral:45,presult:650},
+            //     {mainframe:35,displayer:40,peripheral:45,presult:820},
+            //     {mainframe:69,displayer:40,peripheral:45,presult:990},
+            //     {mainframe:70,displayer:40,peripheral:45,presult:995},
+            //     {mainframe:35,displayer:0,peripheral:45,presult:0},
+            //     {mainframe:35,displayer:1,peripheral:45,presult:586},
+            //     {mainframe:35,displayer:79,peripheral:45,presult:1054},
+            //     {mainframe:35,displayer:80,peripheral:45,presult:1060},
+            //     {mainframe:35,displayer:40,peripheral:0,presult:0},
+            //     {mainframe:35,displayer:40,peripheral:1,presult:424},
+            //     {mainframe:35,displayer:40,peripheral:89,presult:1216},
+            //     {mainframe:35,displayer:40,peripheral:90,presult:1225}
+            // ];
         },
         commissionTest2(){
             this.tableCol=[
@@ -130,40 +134,44 @@ export default {
                 {name:"测试结果", value:"rresult"},
                 {name:"正误", value:"tf"},
             ];
-            this.tableData=[
-                {mainframe:-1,displayer:40,peripheral:45,presult:0},
-                {mainframe:0,displayer:40,peripheral:45,presult:0},
-                {mainframe:1,displayer:40,peripheral:45,presult:650},
-                {mainframe:35,displayer:40,peripheral:45,presult:820},
-                {mainframe:69,displayer:40,peripheral:45,presult:990},
-                {mainframe:70,displayer:40,peripheral:45,presult:995},
-                {mainframe:71,displayer:40,peripheral:45,presult:995},
-                {mainframe:35,displayer:-1,peripheral:45,presult:0},
-                {mainframe:35,displayer:0,peripheral:45,presult:0},
-                {mainframe:35,displayer:1,peripheral:45,presult:586},
-                {mainframe:35,displayer:79,peripheral:45,presult:1054},
-                {mainframe:35,displayer:80,peripheral:45,presult:1060},
-                {mainframe:35,displayer:81,peripheral:45,presult:1060},
-                {mainframe:35,displayer:40,peripheral:-1,presult:0},
-                {mainframe:35,displayer:40,peripheral:0,presult:0},
-                {mainframe:35,displayer:40,peripheral:1,presult:424},
-                {mainframe:35,displayer:40,peripheral:89,presult:1216},
-                {mainframe:35,displayer:40,peripheral:90,presult:1225},
-                {mainframe:35,displayer:40,peripheral:91,presult:1225}
-            ];
-            for(let i=0;i<this.tableData.length;i++){
-                this.$axios.post('/commissionTest',
-                    {
-                        'mainframe':this.tableData[i].mainframe,
-                        'displayer':this.tableData[i].displayer,
-                        'peripheral':this.tableData[i].peripheral,
-                        'index':i
-                    })
-                    .then((response) => {
-                        let result=response.data;
-                        this.changeData(result)
-                    })
-            }
+            // this.tableData=[
+            //     {mainframe:-1,displayer:40,peripheral:45,presult:0},
+            //     {mainframe:0,displayer:40,peripheral:45,presult:0},
+            //     {mainframe:1,displayer:40,peripheral:45,presult:650},
+            //     {mainframe:35,displayer:40,peripheral:45,presult:820},
+            //     {mainframe:69,displayer:40,peripheral:45,presult:990},
+            //     {mainframe:70,displayer:40,peripheral:45,presult:995},
+            //     {mainframe:71,displayer:40,peripheral:45,presult:995},
+            //     {mainframe:35,displayer:-1,peripheral:45,presult:0},
+            //     {mainframe:35,displayer:0,peripheral:45,presult:0},
+            //     {mainframe:35,displayer:1,peripheral:45,presult:586},
+            //     {mainframe:35,displayer:79,peripheral:45,presult:1054},
+            //     {mainframe:35,displayer:80,peripheral:45,presult:1060},
+            //     {mainframe:35,displayer:81,peripheral:45,presult:1060},
+            //     {mainframe:35,displayer:40,peripheral:-1,presult:0},
+            //     {mainframe:35,displayer:40,peripheral:0,presult:0},
+            //     {mainframe:35,displayer:40,peripheral:1,presult:424},
+            //     {mainframe:35,displayer:40,peripheral:89,presult:1216},
+            //     {mainframe:35,displayer:40,peripheral:90,presult:1225},
+            //     {mainframe:35,displayer:40,peripheral:91,presult:1225}
+            // ];
+            this.$axios.get('/getCommissionTest2')
+                .then((response) => {
+                    this.tableData=response.data;
+                    for(let i=0;i<this.tableData.length;i++){
+                        this.$axios.post('/commissionTest',
+                            {
+                                'mainframe':this.tableData[i].mainframe,
+                                'displayer':this.tableData[i].displayer,
+                                'peripheral':this.tableData[i].peripheral,
+                                'index':i
+                            })
+                            .then((response) => {
+                                let result=response.data;
+                                this.changeData(result)
+                            })
+                    }
+                });
         },
         triAngelTest1(){
           this.tableCol=[
